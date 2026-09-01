@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIAGA TKA IPS – Review Soal #1-43</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
-
+    <title>SIAGA KSR IPS BY FAUZAN (dengan Sound)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: oklch(0.98 0.01 250);
@@ -21,341 +19,179 @@
             --bg: oklch(0.15 0.02 260);
             --text: oklch(0.95 0.01 250);
             --card: oklch(0.22 0.02 260);
-            --highlight: oklch(0.35 0.1 85);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.4s, color 0.4s; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 50px; }
-        header { text-align: center; padding: 20px; background: var(--card); box-shadow: 0 4px 6px var(--shadow); }
-        h1 { font-family: 'Patrick Hand', cursive; font-size: 2.2rem; color: var(--accent2); }
-        .subtitle { font-size: 0.9rem; opacity: 0.8; }
-        .top-controls { display: flex; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-        button {
-            font-family: 'Poppins', sans-serif; font-weight: 600;
-            background: var(--accent1); color: white; border: none;
-            padding: 10px 15px; border-radius: 8px; cursor: pointer;
-            transform: translateY(0); transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: 0.3s; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 50px; }
+        header { text-align: center; padding: 20px; background: var(--card); box-shadow: 0 4px 8px var(--shadow); }
+        h1 { font-family: 'Patrick Hand', cursive; font-size: 2.5rem; color: var(--accent2); }
+        .controls { margin: 15px 0; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        button { padding: 10px 15px; border: none; border-radius: 8px; background: var(--accent1); color: white; cursor: pointer; font-weight: 600; transform: translateY(0); transition: 0.2s; }
         button:hover { transform: translateY(-3px); box-shadow: 0 5px 10px var(--shadow); background: var(--accent2); }
-        button.reset { background: var(--accent2); }
-        button.reset:hover { background: var(--accent1); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+        .container { max-width: 1000px; margin: auto; padding: 10px 15px; }
         .card { background: var(--card); border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px var(--shadow); }
-        h2 { color: var(--accent1); margin-bottom: 10px; border-left: 5px solid var(--accent1); padding-left: 10px; }
-        h3 { color: var(--accent2); margin: 15px 0 5px; }
-        .highlight { background: var(--highlight); padding: 2px 5px; border-radius: 3px; font-weight: bold; }
-        .soal-item { margin-bottom: 20px; border-bottom: 1px dashed var(--shadow); padding-bottom: 15px; }
-        .soal-title { font-weight: 700; margin-bottom: 5px; }
+        h2 { color: var(--accent1); border-left: 5px solid var(--accent1); padding-left: 10px; margin-bottom: 15px; }
+        .soal { margin-bottom: 30px; border-bottom: 1px dashed var(--shadow); padding-bottom: 15px; }
+        .soal-title { font-weight: 700; margin-bottom: 8px; }
         .pilihan label { display: block; margin: 5px 0; cursor: pointer; }
-        .pilihan input[type="radio"] { margin-right: 8px; }
-        .feedback { margin-top: 10px; padding: 10px; border-radius: 5px; display: none; }
+        .pilihan input { margin-right: 8px; }
+        .feedback { margin-top: 10px; padding: 10px; border-radius: 5px; display: none; font-weight: 600; }
         .feedback.correct { background: oklch(0.85 0.15 150); color: oklch(0.2 0.05 150); display: block; }
         .feedback.wrong { background: oklch(0.85 0.15 30); color: oklch(0.2 0.05 30); display: block; }
-        .tips { background: var(--card); border-left: 4px solid var(--accent1); padding: 10px; margin-top: 10px; border-radius: 5px; display: none; }
+        .tips { background: var(--highlight); padding: 10px; border-radius: 5px; margin-top: 10px; display: none; }
         .tips.show { display: block; }
-        .essay-note { background: var(--highlight); padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-        .btn-nav { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
-        .help-btn { position: fixed; bottom: 20px; right: 20px; background: var(--accent2); border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; }
-        .help-popup { display: none; position: fixed; bottom: 80px; right: 20px; background: var(--card); border: 2px solid var(--accent1); border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 10px 20px var(--shadow); }
-        .help-popup.show { display: block; }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.5rem; }
-        }
+        .essay { background: var(--highlight); border-radius: 10px; padding: 15px; margin-bottom: 20px; }
+        @media (max-width: 600px) { h1 { font-size: 1.8rem; } .container { padding: 5px; } }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>📚 SIAGA TKA IPS – Review Soal #1-43</h1>
-        <div class="subtitle">Marathon Soal, Kunci Jawaban, dan Tips</div>
-        <div class="top-controls">
-            <button onclick="toggleDark()">🌓 Mode Gelap/Terang</button>
-            <button class="reset" onclick="resetAll()">🔄 Reset Semua</button>
-            <button class="reset" onclick="toggleHelp()">❓ Bantuan</button>
+        <h1>📚 SIAGA KSR IPS BY FAUZAN</h1>
+        <div class="controls">
+            <button onclick="toggleDark()">🌓 Gelap/Terang</button>
+            <button onclick="resetAll()">🔄 Reset</button>
         </div>
     </header>
 
-    <div class="help-popup" id="helpPopup">
-        <strong>Cara Pakai:</strong><br>
-        1. Baca soal dan pilih salah satu jawaban.<br>
-        2. Klik tombol "Cek Jawaban" untuk melihat benar/salah.<br>
-        3. Tips akan muncul setelah menjawab.<br>
-        4. Gunakan tombol Reset untuk mengulang.
-    </div>
-
     <div class="container">
         <div class="card">
-            <h2>📝 Soal Pilihan Ganda (1–37, 40–43)</h2>
-            <p>Total 41 soal PG. Jawablah dengan memilih salah satu opsi, lalu klik "Cek".</p>
+            <h2>📝 Soal Pilihan Ganda (1–43)</h2>
             <div id="soal-area"></div>
         </div>
 
         <div class="card">
-            <h2>📝 Esai (Soal #38 & #39)</h2>
-            <div class="essay-note">
-                <strong>Soal #38 [Sosiologi]:</strong> Jelaskan bagaimana media sosial menimbulkan konflik dan upaya integrasi sosial di masyarakat plural!<br>
-                <em>Jawabanmu sebelumnya:</em> Terlalu fokus ke penyebab, lupa solusi. Skor: 60/100<br>
-                <strong>Tips:</strong> Gunakan rumus A-S-I: Analisis (sebut hoaks, etnosentrisme), Solusi (literasi digital, toleransi), Istilah (disintegrasi, akomodasi).
-            </div>
-            <div class="essay-note">
-                <strong>Soal #39 [Sosiologi]:</strong> Sebutkan 1 contoh konflik dan 1 upaya integrasi sosial di media sosial!<br>
-                <em>Jawabanmu sebelumnya:</em> Hoaks/perbedaan pandangan + Literasi digital & Pancasila. Skor: 85/100<br>
-                <strong>Tips:</strong> Tambahkan istilah sosiologi seperti akomodasi dan toleransi agar skor makin sempurna.
-            </div>
+            <h2>📝 Esai</h2>
+            <div class="essay"><strong>#38:</strong> Media sosial & konflik... <br><em>Skor 60/100, gunakan A-S-I.</em></div>
+            <div class="essay"><strong>#39:</strong> Contoh konflik & integrasi... <br><em>Skor 85/100, tambahkan akomodasi.</em></div>
         </div>
     </div>
 
-    <button class="help-btn" onclick="toggleHelp()">?</button>
-
     <script>
-        // Data Soal PG (dari review #1-15, #16-39, #40-43)
+        // ====== SOUND EFFECT (Web Audio API) ======
+        let audioCtx;
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+        function playCorrect() {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, audioCtx.currentTime); // nada tinggi
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+        function playWrong() {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(220, audioCtx.currentTime); // nada rendah
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.4);
+        }
+
+        // ====== DATA SOAL (sudah fixed) ======
         const soalPG = [
-            // #1
-            { nomor: 1, topik: "Sosiologi", soal: "Perhatikan data berikut! (Data TPT SMK vs SMA, Laki-laki vs Perempuan). Masalah sosial yang paling tepat tergambar oleh data tersebut adalah....",
-              pilihan: ["Kualitas lulusan SMK yang rendah menyebabkan mereka sulit bersaing.", "Pengangguran merupakan fenomena alamiah yang tidak dapat dihindari.", "Ketimpangan gender dalam peluang kerja tidak bersifat konsisten, melainkan dipengaruhi oleh jenis keterampilan dan jenjang pendidikan.", "Lulusan SMA memiliki peluang kerja yang lebih baik dibandingkan lulusan SMK."],
-              kunci: 2, tips: "Baca polanya. Perempuan lebih tinggi di SMK, laki-laki lebih tinggi di SMA. Artinya ketimpangan gender tidak konsisten. Jangan berasumsi di luar data." },
-            // #2
-            { nomor: 2, topik: "Sejarah", soal: "Perang Padri pada awal abad ke-19 tidak hanya menjadi perlawanan terhadap kekuatan kolonial Belanda, tetapi juga merupakan konflik internal antara dua kelompok masyarakat di Minangkabau, yaitu Kaum Padri dan Kaum Adat. Kaum Padri dipengaruhi oleh gerakan pembaruan Islam dari Timur Tengah, sementara Kaum Adat berupaya mempertahankan nilai-nilai tradisi lokal yang telah mengakar. Berdasarkan uraian tersebut, penyebab pecahnya Perang Padri *sebelum* campur tangan Belanda adalah ....",
-              pilihan: ["Persaingan ekonomi antara para pedagang Arab dan pedagang lokal di wilayah Sumatera Barat.", "Kebijakan kolonial Belanda yang membatasi aktivitas keagamaan dan adat masyarakat Minangkabau.", "Tuntutan rakyat Minangkabau kepada pemerintah Belanda untuk memberikan otonomi dalam urusan agama dan adat.", "Pertentangan ideologis antara penganut ajaran Islam puritan dengan para pemuka adat dalam menjalankan kehidupan sosial."],
-              kunci: 3, tips: "Selalu garis bawahi kata kunci waktu (sebelum, setelah). Jika ada opsi yang menyebut Belanda padahal soal menanyakan penyebab awal, coret opsi tersebut." },
-            // #3
-            { nomor: 3, topik: "Ekonomi", soal: "Pemerintah baru saja mengumumkan kebijakan untuk menaikkan harga BBM bersubsidi. Kenaikan harga BBM ini secara langsung menyebabkan peningkatan biaya transportasi dan biaya produksi bagi seluruh industri manufaktur di Indonesia. Berdasarkan ilustrasi tersebut, dampak yang paling tepat terhadap keseimbangan pasar (harga dan jumlah barang) untuk produk manufaktur adalah ....",
-              pilihan: ["Kurva penawaran bergeser ke kanan, harga keseimbangan turun, dan jumlah keseimbangan naik.", "Kurva penawaran bergeser ke kiri, harga keseimbangan naik, dan jumlah keseimbangan turun.", "Kurva permintaan bergeser ke kiri, harga keseimbangan turun, dan jumlah keseimbangan turun.", "Kurva permintaan dan penawaran bergeser ke kiri bersamaan, harga keseimbangan tetap, dan jumlah keseimbangan turun."],
-              kunci: 1, tips: "Mantra abadi: 'Biaya naik = S kiri (Harga naik, Q turun).' Biaya naik menggeser kurva penawaran ke KIRI." },
-            // #4
-            { nomor: 4, topik: "Geografi", soal: "Sebuah peta topografi memiliki skala 1:50.000. Pada peta tersebut, terdapat dua titik, yaitu Desa A dan Desa B. Garis kontur di antara Desa A dan Desa B terlihat sangat rapat dan berdekatan, sedangkan garis kontur di antara Desa B dan Desa C terlihat sangat renggang. Jika pemerintah ingin membangun jalur transportasi yang efisien dan murah, rute yang paling tepat direkomendasikan adalah....",
-              pilihan: ["Rute A-B karena tekstur tanahnya yang paling keras dan stabil untuk pondasi bangunan.", "Rute B-C karena kemiringan lerengnya lebih landai sehingga biaya pematangan lahan lebih murah.", "Rute A-B karena jaraknya paling pendek dan memiliki akses sumber air yang melimpah.", "Rute B-C karena daerahnya lebih tinggi sehingga bebas dari risiko banjir dan longsor."],
-              kunci: 1, tips: "Hafalkan: 'Rapat-Curam-Mahal' vs 'Renggang-Landai-Murah'." },
-            // #5
-            { nomor: 5, topik: "Geografi", soal: "Dua jalur pendakian menuju puncak gunung disajikan dalam peta topografi. Jalur X memiliki interval kontur 50 meter dengan jarak antar garis di peta 0,5 cm. Jalur Y memiliki interval kontur 50 meter dengan jarak antar garis di peta 2 cm. Seorang pendaki ingin mendaki dengan mengutamakan keamanan dan menghemat energi. Berdasarkan data tersebut, jalur yang sebaiknya dipilih pendaki adalah....",
-              pilihan: ["Jalur X, karena jarak tempuh di peta lebih pendek sehingga waktu pendakian lebih cepat.", "Jalur Y, karena kemiringan lerengnya lebih landai sehingga risiko kelelahan dan kecelakaan lebih kecil.", "Jalur X, karena konturnya lebih rapat menandakan medan yang lebih stabil dan tidak berbatu.", "Jalur Y, karena garis konturnya lebih renggang menandakan medan yang lebih curam namun pemandangannya lebih indah."],
-              kunci: 1, tips: "Jarak 0,5 cm = rapat (curam). Jarak 2 cm = renggang (landai). Pilih yang landai untuk hemat energi." },
-            // #6
-            { nomor: 6, topik: "Sejarah", soal: "Pada awal abad ke-20, muncul berbagai organisasi pergerakan nasional dengan strategi yang berbeda. Organisasi yang didirikan oleh Douwes Dekker, Tjipto Mangoenkoesoemo, dan Ki Hajar Dewantara ini bertujuan untuk menumbuhkan semangat kebangsaan dan persatuan di kalangan kaum terpelajar Indo-Eropa dan pribumi dengan semboyan 'Indie voor de Indiërs' (India untuk orang India). Organisasi tersebut adalah....",
-              pilihan: ["Budi Utomo", "Sarekat Islam", "Indische Partij", "Perhimpunan Indonesia"],
-              kunci: 2, tips: "Hafal 'Tiga Serangkai' (Douwes Dekker, Tjipto, Ki Hajar). Jangan tertukar dengan Budi Utomo." },
-            // #7
-            { nomor: 7, topik: "Sosiologi", soal: "Pak Budi adalah seorang buruh tani yang sangat rajin dan gigih. Dengan hasil kerja kerasnya, ia berhasil menabung dan menyekolahkan anaknya hingga lulus S2. Kini, anaknya bekerja sebagai dokter spesialis di rumah sakit besar di Jakarta. Perubahan kedudukan sosial dari kakeknya (petani), ke ayahnya (buruh tani), lalu ke anaknya (dokter) merupakan contoh dari mobilitas....",
-              pilihan: ["Mobilitas horizontal", "Mobilitas vertikal ke atas (antargenerasi)", "Mobilitas vertikal ke atas (intragenerasi)", "Mobilitas vertikal ke bawah (intragenerasi)"],
-              kunci: 1, tips: "'ANTAR = Beda orang (kakek-ayah-anak). INTRA = Orang yang sama.'" },
-            // #8
-            { nomor: 8, topik: "Ekonomi", soal: "Andi memiliki waktu luang 5 jam di akhir pekan. Ia memiliki beberapa pilihan kegiatan: 1. Bekerja part-time di kafe dengan upah Rp 100.000. 2. Les privat matematika dengan bayaran Rp 150.000. 3. Membantu orang tua berjualan di pasar tanpa dibayar, namun menghemat biaya gaji karyawan Rp 80.000. 4. Bermain game di rumah. Jika Andi memilih untuk les privat matematika (pilihan 2), maka biaya peluang yang harus ditanggung Andi adalah....",
-              pilihan: ["Rp 150.000 (nilai les privat yang dipilihnya)", "Rp 100.000 (upah bekerja di kafe)", "Rp 80.000 (penghematan biaya gaji karyawan)", "Kehilangan seluruh potensi penghasilan sebesar Rp 330.000"],
-              kunci: 1, tips: "Mantra: 'Coret yang dipilih. Lihat sisanya. Ambil yang paling cuan!' Rp 100.000 adalah nilai tertinggi yang dia TOLAK." },
-            // #9
-            { nomor: 9, topik: "Ekonomi", soal: "Rina memiliki uang tabungan sebesar Rp 500.000. Ia memiliki beberapa pilihan penggunaan uang tersebut: 1. Membeli sepatu baru yang sudah lama diinginkannya seharga Rp 500.000. 2. Membeli saham di perusahaan lokal yang diprediksi memberikan keuntungan (dividen) sebesar Rp 150.000 dalam sebulan. 3. Menabung di bank dengan bunga 2% per bulan (mendapat Rp 10.000). 4. Membeli emas yang diprediksi naik harganya sebesar Rp 75.000 dalam sebulan. Jika Rina memilih untuk membeli sepatu baru (pilihan 1), maka biaya peluang yang harus ditanggung Rina adalah....",
-              pilihan: ["Rp 500.000 (harga sepatu yang dibelinya)", "Rp 150.000 (keuntungan membeli saham)", "Rp 75.000 (keuntungan membeli emas)", "Rp 10.000 (bunga menabung di bank)"],
-              kunci: 1, tips: "Uang yang keluar (harga sepatu) itu Biaya Eksplisit. Keuntungan terbesar yang dia tolak adalah Rp 150.000 dari saham." },
-            // #10
-            { nomor: 10, topik: "Ekonomi", soal: "Rina memiliki uang Rp 500.000. Ia memiliki beberapa pilihan: 1. Les privat matematika (membayar Rp 150.000, tapi tidak menghasilkan uang). 2. Membeli saham (membayar Rp 100.000, diprediksi untung Rp 50.000). 3. Membeli emas (membayar Rp 200.000, diprediksi untung Rp 150.000). 4. Menabung di bank (membayar Rp 50.000, mendapat bunga Rp 20.000). Jika Rina memilih untuk Les privat matematika (pilihan 1), maka biaya peluang yang harus ditanggung Rina adalah....",
-              pilihan: ["Rp 150.000 (uang yang dibayarkan untuk les)", "Rp 50.000 (keuntungan membeli saham)", "Rp 150.000 (keuntungan membeli emas)", "Rp 20.000 (bunga menabung di bank)"],
-              kunci: 2, tips: "Pilihan les itu 'rugi' (nggak dapat cuan). Jadi cari keuntungan terbesar dari yang dia tolak. Keuntungan emas (Rp 150.000) lebih besar dari saham (Rp 50.000)." },
-            // #11
-            { nomor: 11, topik: "Sosiologi", soal: "Sebuah kota mengalami gelombang urbanisasi yang sangat pesat akibat industrialisasi. Akibatnya, terjadi persaingan ketat di pasar kerja antara penduduk asli dan pendatang. Kelompok pendatang dianggap mengambil peluang kerja, sementara kelompok penduduk asli merasa tersisih. Pemerintah kota kemudian merespons dengan membangun pusat pelatihan kerja gratis (Balai Latihan Kerja) yang terbuka untuk semua kalangan tanpa memandang asal daerah, serta menetapkan kuota 50% pekerjaan di sektor publik bagi penduduk asli. Berdasarkan ilustrasi tersebut, kebijakan pemerintah yang paling tepat dikategorikan sebagai akomodasi adalah....",
-              pilihan: ["Membangun pusat pelatihan kerja gratis yang terbuka untuk semua kalangan.", "Menetapkan kuota 50% pekerjaan di sektor publik bagi penduduk asli.", "Membiarkan persaingan pasar kerja berjalan secara alami agar yang kuat menang.", "Mengusir pendatang yang tidak memiliki KTP domisili dari kota tersebut."],
-              kunci: 0, tips: "Akomodasi = meredakan konflik tanpa menghancurkan. Pilih opsi yang paling netral dan menguntungkan semua pihak." },
-            // #12
-            { nomor: 12, topik: "Ekonomi", soal: "Diketahui perekonomian suatu negara (tertutup) memiliki fungsi konsumsi C = 200 + 0,8Yd, Investasi (I) sebesar 300, Pengeluaran Pemerintah (G) sebesar 500, dan Pajak tetap (T) sebesar 250. Apabila pemerintah menaikkan belanja negara (G) sebesar 100, maka besarnya kenaikan Pendapatan Nasional (Y) adalah....",
-              pilihan: ["100", "200", "500", "1.000"],
-              kunci: 2, tips: "Gunakan rumus cepat: Multiplier = 1 / (1 - MPC). MPC = 0,8, MPS = 0,2, multiplier = 5. Kenaikan G = 100, maka ΔY = 5 x 100 = 500." },
-            // #13
-            { nomor: 13, topik: "Ekonomi", soal: "Suatu negara memiliki kecenderungan mengonsumsi (MPC) sebesar 0,75. Pemerintah memutuskan untuk meningkatkan belanja infrastruktur (G) sebesar Rp 200 miliar. Berapa besarnya kenaikan Pendapatan Nasional (Y) negara tersebut?",
-              pilihan: ["Rp 200 miliar", "Rp 400 miliar", "Rp 800 miliar", "Rp 1.000 miliar"],
-              kunci: 2, tips: "MPS = 1 - 0,75 = 0,25. Multiplier = 1 / 0,25 = 4. Total kenaikan = 4 x 200 = Rp 800 miliar." },
-            // #14
-            { nomor: 14, topik: "Ekonomi", soal: "Diketahui sebuah negara memiliki kecenderungan mengonsumsi (MPC) sebesar 0,9 (atau 90%). Pemerintah memutuskan untuk meningkatkan belanja negara (G) sebesar Rp 50 miliar untuk membangun jalan raya. Berdasarkan data tersebut, kenaikan Pendapatan Nasional (ΔY) negara tersebut adalah....",
-              pilihan: ["Rp 50 miliar", "Rp 100 miliar", "Rp 250 miliar", "Rp 500 miliar"],
-              kunci: 3, tips: "MPS = 1 - 0,9 = 0,1. Multiplier = 1 / 0,1 = 10. Total kenaikan Y = 10 x 50 = Rp 500 miliar." },
-            // #15
-            { nomor: 15, topik: "Sejarah", soal: "Migrasi nenek moyang bangsa Indonesia berasal dari wilayah Yunan (Tiongkok Selatan) ke Kepulauan Nusantara. Menurut teori Out of Taiwan, migrasi tersebut terjadi karena faktor....",
-              pilihan: ["Adanya serangan dari bangsa Mongol di daratan Asia.", "Perubahan iklim yang menyebabkan permukaan laut naik dan daratan menyempit.", "Adanya tradisi merantau yang sudah mengakar kuat dalam budaya Austronesia.", "Perang saudara antar suku di dataran Asia yang memaksa mereka mencari wilayah baru."],
-              kunci: 1, tips: "Ingat mantra: 'Es mencair = Laut naik = Jembatan daratan hilang = Migrasi pakai perahu.'" },
-            // #16
-            { nomor: 16, topik: "Ekonomi", soal: "Bank Indonesia (BI) menghadapi tingkat inflasi yang tinggi akibat terlalu banyaknya jumlah uang beredar di masyarakat. Untuk mengendalikan kondisi tersebut, kombinasi kebijakan moneter yang paling tepat dilakukan oleh Bank Indonesia adalah....",
-              pilihan: ["Menurunkan suku bunga dan membeli surat berharga.", "Menaikkan suku bunga dan menjual surat berharga (SBI).", "Menurunkan cadangan wajib minimum (GWM).", "Menaikkan suku bunga dan membeli surat berharga."],
-              kunci: 1, tips: "Inflasi tinggi = Uang beredar terlalu banyak. Solusinya: Naikkan bunga dan Jual SBI (Tarik uang dari masyarakat)." },
-            // #17
-            { nomor: 17, topik: "Geografi", soal: "Batas imajiner yang memisahkan zona fauna Peralihan dengan zona fauna Australis adalah....",
-              pilihan: ["Garis Wallace", "Garis Weber", "Garis Khatulistiwa", "Garis Lintang Selatan"],
-              kunci: 1, tips: "Mantra: Wallace = Barat (Asiatis vs Peralihan). Weber = Timur (Peralihan vs Australis)." },
-            // #18
-            { nomor: 18, topik: "Geografi", soal: "Seorang peneliti menemukan spesies burung di Indonesia bagian tengah yang mirip dengan burung di Australia. Berdasarkan teori persebaran fauna Wallacea, letak pulau yang diteliti tersebut berada di zona fauna...",
-              pilihan: ["Asiatis", "Peralihan", "Australis", "Peralihan di timur Weber"],
-              kunci: 1, tips: "Indonesia bagian tengah = Peralihan. Letaknya tepat di antara Garis Wallace dan Garis Weber." },
-            // #19
-            { nomor: 19, topik: "Geografi", soal: "Pernyataan yang PALING TEPAT mengenai Garis Weber adalah....",
-              pilihan: ["Memisahkan fauna Asiatis dan Peralihan", "Memisahkan flora tropis dan subtropis", "Memisahkan fauna Peralihan dan Australis", "Membagi dua musim di Indonesia"],
-              kunci: 2, tips: "Weber = Timur. Memisahkan Peralihan dan Australis. Jangan tertukar dengan Wallace yang Barat." },
-            // #20
-            { nomor: 20, topik: "Geografi", soal: "Garis Wallace merupakan garis khayal yang memisahkan wilayah persebaran fauna tipe....",
-              pilihan: ["Asiatis dan Peralihan", "Peralihan dan Australis", "Asiatis dan Australis", "Peralihan dan Antartika"],
-              kunci: 0, tips: "Wallace = Barat = Asiatis vs Peralihan." },
-            // #21
-            { nomor: 21, topik: "Sejarah", soal: "Teori besar (Out of Taiwan, Out of Yunan) menjelaskan migrasi nenek moyang. Faktor utama yang mendorong migrasi besar-besaran dari daratan Asia ke Nusantara adalah....",
-              pilihan: ["Perubahan iklim ekstrem (zaman es) dan tekanan invasi.", "Keinginan menguasai jalur perdagangan.", "Kekeringan panjang.", "Tradisi merantau."],
-              kunci: 0, tips: "Ingat mantra: 'Es mencair = Laut naik = Jembatan darat hilang = Migrasi pakai perahu.' Bukan kekeringan!" },
-            // #22
-            { nomor: 22, topik: "Sejarah", soal: "Dampak utama mencairnya es di kutub pada akhir Zaman Es terhadap migrasi adalah....",
-              pilihan: ["Manusia terpaksa menetap tanpa berpindah.", "Menghilangkan jembatan daratan sehingga migrasi menggunakan perahu.", "Indonesia menjadi gurun pasir.", "Menarik pedagang Asia."],
-              kunci: 1, tips: "Jembatan daratan hilang = migrasi laut dengan perahu." },
-            // #23
-            { nomor: 23, topik: "Sejarah", soal: "Letak Selat Malaka yang strategis adalah kunci kebangkitan Sriwijaya. Namun, ini juga menyebabkan ancaman eksternal berupa....",
-              pilihan: ["Serangan bajak laut", "Keinginan rakyat membentuk kerajaan baru", "Krisis ekonomi", "Perang saudara"],
-              kunci: 0, tips: "Lokasi strategis maritim = rawan bajak laut. (Opsi B, C, D adalah ancaman internal)." },
-            // #24
-            { nomor: 24, topik: "Ekonomi", soal: "PKP Pak Joko Rp 70.000.000. Tarif 5% untuk 50 juta pertama, 15% untuk sisanya. Total PPh?",
-              pilihan: ["Rp 2.500.000", "Rp 5.500.000", "Rp 10.500.000", "Rp 8.000.000"],
-              kunci: 1, tips: "Potong dulu 50 juta (5% = 2,5 juta). Sisa 20 juta (15% = 3 juta). Total = 5,5 juta. Jangan langsung kalikan total!" },
-            // #25
-            { nomor: 25, topik: "Sosiologi", soal: "Contoh fungsi laten dari lembaga keluarga adalah....",
-              pilihan: ["Mengajarkan baca tulis", "Tempat kasih sayang", "Alat kontrol sosial", "Pewarisan harta"],
-              kunci: 2, tips: "Fungsi Laten = Efek samping tersembunyi. Kontrol sosial adalah efek sampingnya. (B adalah fungsi primer/manifes)." },
-            // #26
-            { nomor: 26, topik: "Geografi", soal: "Faktor penarik (pull factor) utama arus urbanisasi adalah....",
-              pilihan: ["Upah minimum kota yang rendah", "Banyaknya lapangan kerja di sektor industri dan jasa", "Terbatasnya lahan pertanian", "Program transmigrasi"],
-              kunci: 1, tips: "Pendorong = Kabur dari masalah. Penarik = Mengejar peluang. Lapangan kerja adalah daya tarik utama kota." },
-            // #27
-            { nomor: 27, topik: "Sejarah", soal: "Bentuk nyata peran Indonesia dalam meredakan Perang Dingin adalah....",
-              pilihan: ["Anggota tetap Dewan Keamanan PBB", "Tuan rumah Konferensi Asia Afrika (KAA)", "Mengirim pasukan ke Eropa Timur", "Mitra dagang utama AS"],
-              kunci: 1, tips: "KAA Bandung 1955 adalah wujud politik Bebas Aktif Indonesia yang melahirkan Gerakan Non-Blok." },
-            // #28
-            { nomor: 28, topik: "Ekonomi", soal: "Dina punya Rp 200.000. Pilihan: Beli sepatu (0), Nabung (Rp 10.000), Beli saham (Rp 40.000). Jika Dina memilih saham, biaya peluangnya adalah...",
-              pilihan: ["Bunga bank Rp 10.000", "Harga sepatu Rp 200.000", "Keuntungan saham Rp 40.000", "Bunga dan harga sepatu"],
-              kunci: 0, tips: "'Coret yang dipilih. Lihat sisanya. Ambil yang paling cuan.' Jangan pernah menjumlahkan biaya eksplisit dengan keuntungan!" },
-            // #28B (nomor 28B)
-            { nomor: 28B, topik: "Ekonomi", soal: "Rina punya Rp 500.000. Pilihan: Tas (0), Nabung (Rp 50.000), Emas (Rp 80.000). Jika memilih nabung, biaya peluangnya?",
-              pilihan: ["Rp 80.000 (emas)", "Rp 50.000 (bunga)", "Rp 500.000 (tas)", "Rp 130.000 (total)"],
-              kunci: 0, tips: "Keuntungan emas (80rb) > bunga bank (50rb). Jangan dijumlahkan!" },
-            // #29
-            { nomor: 29, topik: "Sosiologi", soal: "Guru SD diangkat menjadi kepala sekolah. Ini adalah mobilitas...",
-              pilihan: ["Horizontal", "Vertikal ke atas (intragenerasi)", "Vertikal ke atas (antargenerasi)", "Vertikal ke bawah"],
-              kunci: 1, tips: "Orangnya SAMA = Intra. (Beda orang = Antar!)." },
-            // #29B
-            { nomor: 29B, topik: "Sosiologi", soal: "Pengusaha kaya yang dulunya PKL adalah mobilitas...",
-              pilihan: ["Horizontal", "Vertikal ke atas (intragenerasi)", "Vertikal ke atas (antargenerasi)", "Vertikal ke bawah"],
-              kunci: 1, tips: "'Dialaminya sendiri' = Intragenerasi. Naik status = Vertikal ke atas." },
-            // #30
-            { nomor: 30, topik: "Geografi", soal: "Jawa subur, Kalimantan kaya tambang, Sumatera kaya perkebunan. Bentuk interaksi yang tepat adalah....",
-              pilihan: ["Migrasi massal", "Arus ekspor-impor antar pulau", "Perubahan iklim drastis", "Kesenjangan permanen"],
-              kunci: 1, tips: "Complementarity (saling melengkapi) = Ekspor-Impor." },
-            // #31
-            { nomor: 31, topik: "Geografi", soal: "Garis Weber memisahkan fauna tipe....",
-              pilihan: ["Asiatis dan Peralihan", "Peralihan dan Australis", "Asiatis dan Australis", "Khatulistiwa dan Tropis"],
-              kunci: 1, tips: "Weber = Timur (East) = Peralihan vs Australis." },
-            // #32
-            { nomor: 32, topik: "Geografi", soal: "Garis Wallace terletak di Barat dan memisahkan fauna tipe....",
-              pilihan: ["Asiatis dan Peralihan", "Peralihan dan Australis", "Asiatis dan Australis", "Peralihan dan Antartika"],
-              kunci: 0, tips: "Wallace = Barat (West) = Asiatis vs Peralihan." },
-            // #33
-            { nomor: 33, topik: "Ekonomi", soal: "Untuk mengatasi inflasi tinggi, BI melakukan kebijakan kontraktif dengan cara....",
-              pilihan: ["Menurunkan suku bunga dan membeli SBI", "Menurunkan GWM", "Menaikkan suku bunga dan menjual SBI", "Menaikkan suku bunga dan membeli SBI"],
-              kunci: 2, tips: "'Jual = Tarik Uang'. Menaikkan bunga = Malas pinjam." },
-            // #34
-            { nomor: 34, topik: "Sosiologi", soal: "Fungsi laten dari lembaga pendidikan adalah....",
-              pilihan: ["Menyiapkan ujian nasional", "Mengajarkan matematika", "Menjadi ajang mencari teman dan pasangan", "Memberikan ijazah"],
-              kunci: 2, tips: "Manifes = Diniatkan. Laten = Efek samping (cari teman/pasangan)." },
-            // #34B
-            { nomor: 34B, topik: "Sosiologi", soal: "Fungsi laten dari lembaga agama adalah....",
-              pilihan: ["Panduan sholat", "Nilai kebaikan", "Mempererat solidaritas antar warga", "Menentukan hari raya"],
-              kunci: 2, tips: "Solidaritas adalah efek samping tersembunyi (Laten). Sholat/Ibadah adalah tujuan utamanya (Manifes)." },
-            // #35
-            { nomor: 35, topik: "Sejarah", soal: "Dampak utama mencairnya es terhadap migrasi nenek moyang adalah....",
-              pilihan: ["Menutup jalur darat", "Menghilangkan jembatan daratan sehingga migrasi pakai perahu", "Membuat gurun pasir", "Menarik pedagang"],
-              kunci: 1, tips: "Konsep 'Jembatan darat hilang' sudah kamu kuasai." },
-            // #36
-            { nomor: 36, topik: "Sejarah", soal: "Faktor utama keberhasilan ekspansi Gajah Mada (Sumpah Palapa) adalah....",
-              pilihan: ["Pasukan militer besar dan modern", "Menguasai jalur pelayaran dan perdagangan", "Aliansi pernikahan dengan Sriwijaya", "Strategi perang gerilya di darat"],
-              kunci: 1, tips: "Kerajaan maritim menang karena menguasai jalur pelayaran." },
-            // #37
-            { nomor: 37, topik: "Sejarah", soal: "Tujuan utama Jepang membentuk PUTERA adalah....",
-              pilihan: ["Pendidikan politik", "Memanfaatkan tokoh nasionalis untuk dukungan dan tenaga kerja (Romusha)", "Melatih pemuda militer", "Menyampaikan aspirasi kemerdekaan"],
-              kunci: 1, tips: "PUTERA = Politik & Tenaga Kerja. PETA = Pasukan Militer. Jangan tertukar!" },
-            // #37B
-            { nomor: 37B, topik: "Sejarah", soal: "Tujuan utama Jepang membentuk PETA adalah....",
-              pilihan: ["Pendidikan politik", "Melatih pemuda untuk membantu Jepang menghadapi Sekutu", "Menampung aspirasi", "Tenaga kerja murah"],
-              kunci: 1, tips: "PETA = Pasukan Militer untuk perang." },
-            // #40
-            { nomor: 40, topik: "Sejarah", soal: "Pada masa pemerintahan Orde Baru, pembangunan ekonomi nasional dilandaskan pada Trilogi Pembangunan yang dicetuskan oleh Presiden Soeharto. Ketiga pilar utama dalam konsep Trilogi Pembangunan tersebut adalah....",
-              pilihan: ["Stabilitas nasional yang sehat dan dinamis, pertumbuhan ekonomi yang tinggi, serta pemerataan pembangunan dan hasil-hasilnya.", "Nasionalisme, agama, dan komunisme (Nasakom).", "Industrialisasi, agraris, dan kemaritiman.", "Swasembada pangan, ekspor migas, dan pariwisata."],
-              kunci: 0, tips: "Hafalkan mantra 'Trilogi = SPP' (Stabilitas, Pertumbuhan, Pemerataan). Opsi B adalah konsep Orde Lama." },
-            // #40B
-            { nomor: 40B, topik: "Sejarah", soal: "Untuk merealisasikan Trilogi Pembangunan, pemerintah Orde Baru menerapkan kebijakan REPELITA (Rencana Pembangunan Lima Tahun). Tujuan utama dari penerapan kebijakan REPELITA pada masa itu adalah....",
-              pilihan: ["Mewujudkan stabilitas nasional, pertumbuhan ekonomi, dan pemerataan pembangunan di seluruh wilayah Indonesia.", "Mewujudkan industri berat dan persenjataan militer untuk menyaingi negara-negara maju.", "Menasionalisasi semua aset perusahaan asing agar menjadi milik rakyat Indonesia sepenuhnya.", "Menciptakan sistem ekonomi pasar bebas yang sepenuhnya berorientasi pada ekspor ke luar negeri."],
-              kunci: 0, tips: "REPELITA adalah alat untuk mencapai tujuan Trilogi, jadi tujuannya otomatis sama." },
-            // #41
-            { nomor: 41, topik: "Ekonomi", soal: "Dalam sebuah perekonomian, diketahui fungsi konsumsi adalah C = 100 + 0,6Y, Investasi (I) = 150, dan Pengeluaran Pemerintah (G) = 50. Berdasarkan data di atas, besarnya Pendapatan Nasional pada saat keseimbangan (Y = C + I + G) adalah....",
-              pilihan: ["150", "300", "600", "750"],
-              kunci: 3, tips: "Gunakan rumus cepat: Y = (C0 + I + G) / MPS. MPS = 1 - 0,6 = 0,4. (100 + 150 + 50) / 0,4 = 300 / 0,4 = 750." },
-            // #42
-            { nomor: 42, topik: "Ekonomi", soal: "Dalam sebuah perekonomian, diketahui fungsi konsumsi adalah C = 200 + 0,8Y, Investasi (I) = 100, dan Pengeluaran Pemerintah (G) = 100. Berdasarkan data di atas, besarnya Pendapatan Nasional pada saat keseimbangan (Y = C + I + G) adalah....",
-              pilihan: ["1.000", "1.500", "2.000", "2.500"],
-              kunci: 2, tips: "(C0 + I + G) / MPS = (200 + 100 + 100) / (1 - 0,8) = 400 / 0,2 = 2.000." },
-            // #43
-            { nomor: 43, topik: "Geografi", soal: "Perhatikan pernyataan berikut: 1. Pulau Jawa kaya akan tanah vulkanik yang subur. 2. Pulau Kalimantan kaya akan hasil tambang dan hutan. 3. Pulau Sumatera kaya akan hasil perkebunan (kelapa sawit, karet). Jika terjadi kerjasama ekonomi antar wilayah berdasarkan potensi sumber daya alam yang berbeda tersebut, bentuk interaksi antarruang yang paling tepat terjadi adalah....",
-              pilihan: ["Perpindahan penduduk massal dari Kalimantan ke Jawa untuk mencari pekerjaan di sektor pertanian.", "Arus ekspor-impor barang dan jasa antar pulau untuk memenuhi kebutuhan yang saling melengkapi (complementarity).", "Perubahan iklim yang drastis di wilayah Kalimantan akibat berkurangnya hutan.", "Terbentuknya kesenjangan sosial yang permanen antar wilayah di Indonesia."],
-              kunci: 1, tips: "Konsep Complementarity (saling melengkapi) terjadi ketika suatu daerah punya kelebihan A tapi kekurangan B, dan daerah lain punya kelebihan B tapi kekurangan A. Solusi paling logis adalah saling tukar menukar barang (ekspor-impor)." }
+            {n:1,t:"Sosiologi",s:"Perhatikan data TPT... Masalah sosial paling tepat?",p:["Kualitas lulusan SMK rendah","Pengangguran alamiah","Ketimpangan gender tidak konsisten","Lulusan SMA lebih baik"],k:2,tips:"Baca polanya, jangan berasumsi."},
+            {n:2,t:"Sejarah",s:"Penyebab Perang Padri sebelum campur tangan Belanda?",p:["Persaingan ekonomi pedagang","Kebijakan Belanda","Tuntutan otonomi","Pertentangan ideologis Padri vs Adat"],k:3,tips:"Coret opsi yang menyebut Belanda."},
+            {n:3,t:"Ekonomi",s:"Kenaikan BBM dampak ke kurva manufaktur?",p:["S kanan, harga turun","S kiri, harga naik, Q turun","D kiri, harga turun","S&D kiri, harga tetap"],k:1,tips:"Biaya naik = S kiri."},
+            {n:4,t:"Geografi",s:"Rute termurah antara A-B vs B-C (kontur rapat/renggang)?",p:["A-B stabil","B-C landai","A-B pendek","B-C tinggi"],k:1,tips:"Renggang = landai = murah."},
+            {n:5,t:"Geografi",s:"Jalur X (0,5cm) vs Y (2cm), pilih?",p:["X cepat","Y landai","X stabil","Y indah"],k:1,tips:"Landai = hemat energi."},
+            {n:6,t:"Sejarah",s:"Organisasi Tiga Serangkai?",p:["Budi Utomo","Sarekat Islam","Indische Partij","Perhimpunan Indonesia"],k:2,tips:"Tiga Serangkai = Indische Partij."},
+            {n:7,t:"Sosiologi",s:"Kakek petani -> ayah buruh -> anak dokter = mobilitas?",p:["Horizontal","Vertikal antargenerasi","Vertikal intragenerasi","Vertikal bawah"],k:1,tips:"Beda orang = antar."},
+            {n:8,t:"Ekonomi",s:"Andi les privat, biaya peluang?",p:["150k (les)","100k (kafe)","80k (bantu ortu)","330k total"],k:1,tips:"Coret pilihan, ambil cuan tertinggi ditolak."},
+            {n:9,t:"Ekonomi",s:"Rina beli sepatu, biaya peluang?",p:["500k (sepatu)","150k (saham)","75k (emas)","10k (bunga)"],k:1,tips:"Keuntungan terbesar ditolak = saham."},
+            {n:10,t:"Ekonomi",s:"Rina les privat, biaya peluang?",p:["150k (les)","50k (saham)","150k (emas)","20k (bunga)"],k:2,tips:"Pilih untung terbesar dari yang ditolak."},
+            {n:11,t:"Sosiologi",s:"Kebijakan akomodasi terbaik?",p:["BLK gratis","Kuota 50%","Biarkan alam","Usir pendatang"],k:0,tips:"Akomodasi = netral & semua untung."},
+            {n:12,t:"Ekonomi",s:"G naik 100, MPC 0,8, ΔY?",p:["100","200","500","1000"],k:2,tips:"Multiplier = 1/MPS = 5, ΔY=5*100=500."},
+            {n:13,t:"Ekonomi",s:"MPC 0,75, G=200m, ΔY?",p:["200","400","800","1000"],k:2,tips:"Multiplier 4, ΔY=800."},
+            {n:14,t:"Ekonomi",s:"MPC 0,9, G=50m, ΔY?",p:["50","100","250","500"],k:3,tips:"Multiplier 10, ΔY=500."},
+            {n:15,t:"Sejarah",s:"Migrasi Out of Taiwan karena?",p:["Serangan Mongol","Laut naik","Tradisi merantau","Perang saudara"],k:1,tips:"Es mencair = laut naik = perahu."},
+            {n:16,t:"Ekonomi",s:"Inflasi tinggi, BI lakukan?",p:["Turun bunga, beli SBI","Naik bunga, jual SBI","Turun GWM","Naik bunga, beli SBI"],k:1,tips:"Jual SBI = tarik uang."},
+            {n:17,t:"Geografi",s:"Pemisah Peralihan vs Australis?",p:["Wallace","Weber","Khatulistiwa","Lintang Selatan"],k:1,tips:"Weber = Timur."},
+            {n:18,t:"Geografi",s:"Burung mirip Australia di Indonesia tengah, zona?",p:["Asiatis","Peralihan","Australis","Timur Weber"],k:1,tips:"Tengah = Peralihan."},
+            {n:19,t:"Geografi",s:"Garis Weber memisahkan?",p:["Asiatis vs Peralihan","Peralihan vs Australis","Asiatis vs Australis","Musim"],k:1,tips:"Weber = Timur."},
+            {n:20,t:"Geografi",s:"Garis Wallace memisahkan?",p:["Asiatis vs Peralihan","Peralihan vs Australis","Asiatis vs Australis","Antartika"],k:0,tips:"Wallace = Barat."},
+            {n:21,t:"Sejarah",s:"Faktor migrasi besar?",p:["Perubahan iklim & invasi","Kuasai perdagangan","Kekeringan","Merantau"],k:0,tips:"Bukan kekeringan."},
+            {n:22,t:"Sejarah",s:"Dampak es mencair?",p:["Menetap","Jembatan hilang, perahu","Gurun","Pedagang"],k:1,tips:"Jembatan hilang = migrasi laut."},
+            {n:23,t:"Sejarah",s:"Ancaman eksternal Sriwijaya?",p:["Bajak laut","Rakyat berontak","Krisis","Perang saudara"],k:0,tips:"Maritim = bajak laut."},
+            {n:24,t:"Ekonomi",s:"PPh Pak Joko 70jt, 5% 50jt pertama, 15% sisanya?",p:["2,5jt","5,5jt","10,5jt","8jt"],k:1,tips:"50jt*5% + 20jt*15% = 5,5jt."},
+            {n:25,t:"Sosiologi",s:"Fungsi laten keluarga?",p:["Baca tulis","Kasih sayang","Kontrol sosial","Pewarisan"],k:2,tips:"Laten = efek samping."},
+            {n:26,t:"Geografi",s:"Faktor penarik urbanisasi?",p:["Upah rendah","Lapangan kerja","Lahan terbatas","Transmigrasi"],k:1,tips:"Penarik = peluang."},
+            {n:27,t:"Sejarah",s:"Peran Indonesia meredakan Perang Dingin?",p:["DK PBB","KAA 1955","Kirim pasukan","Mitra dagang"],k:1,tips:"KAA = Gerakan Non-Blok."},
+            {n:28,t:"Ekonomi",s:"Dina pilih saham, biaya peluang?",p:["Bunga 10rb","Sepatu 200rb","Untung saham 40rb","Bunga+sepatu"],k:0,tips:"Ambil paling cuan ditolak."},
+            {n:"28b",t:"Ekonomi",s:"Rina pilih nabung, biaya peluang?",p:["Emas 80rb","Bunga 50rb","Tas 500rb","Total 130rb"],k:0,tips:"Emas > bunga."},
+            {n:29,t:"Sosiologi",s:"Guru SD jadi kepala sekolah, mobilitas?",p:["Horizontal","Vertikal intra","Vertikal antar","Vertikal bawah"],k:1,tips:"Orang sama = intra."},
+            {n:"29b",t:"Sosiologi",s:"PKL jadi pengusaha kaya, mobilitas?",p:["Horizontal","Vertikal intra","Vertikal antar","Vertikal bawah"],k:1,tips:"Dialami sendiri = intra."},
+            {n:30,t:"Geografi",s:"Interaksi Jawa-Kalimantan-Sumatera?",p:["Migrasi massal","Ekspor-impor","Perubahan iklim","Kesenjangan"],k:1,tips:"Complementarity = ekspor-impor."},
+            {n:31,t:"Geografi",s:"Garis Weber memisahkan?",p:["Asiatis & Peralihan","Peralihan & Australis","Asiatis & Australis","Khatulistiwa"],k:1,tips:"Weber = Timur."},
+            {n:32,t:"Geografi",s:"Garis Wallace memisahkan?",p:["Asiatis & Peralihan","Peralihan & Australis","Asiatis & Australis","Antartika"],k:0,tips:"Wallace = Barat."},
+            {n:33,t:"Ekonomi",s:"Kebijakan kontraktif?",p:["Turun bunga & beli SBI","Turun GWM","Naik bunga & jual SBI","Naik bunga & beli SBI"],k:2,tips:"Jual = tarik uang."},
+            {n:34,t:"Sosiologi",s:"Fungsi laten sekolah?",p:["Ujian","Matematika","Cari teman","Ijazah"],k:2,tips:"Laten = efek samping."},
+            {n:"34b",t:"Sosiologi",s:"Fungsi laten agama?",p:["Sholat","Nilai kebaikan","Solidaritas","Hari raya"],k:2,tips:"Solidaritas = laten."},
+            {n:35,t:"Sejarah",s:"Es mencair dampak migrasi?",p:["Tutup jalur","Jembatan hilang","Gurun","Pedagang"],k:1,tips:"Jembatan hilang."},
+            {n:36,t:"Sejarah",s:"Ekspansi Gajah Mada sukses karena?",p:["Militer modern","Jalur pelayaran","Aliansi","Gerilya"],k:1,tips:"Maritim = pelayaran."},
+            {n:37,t:"Sejarah",s:"Tujuan PUTERA?",p:["Pendidikan politik","Tokoh nasionalis & romusha","Latih militer","Kemerdekaan"],k:1,tips:"PUTERA = politik & tenaga."},
+            {n:"37b",t:"Sejarah",s:"Tujuan PETA?",p:["Pendidikan politik","Latih pemuda perang","Aspirasi","Tenaga murah"],k:1,tips:"PETA = militer."},
+            {n:40,t:"Sejarah",s:"Trilogi Pembangunan?",p:["Stabilitas, Pertumbuhan, Pemerataan","Nasakom","Industri","Swasembada"],k:0,tips:"SPP."},
+            {n:"40b",t:"Sejarah",s:"Tujuan REPELITA?",p:["Stabilitas, pertumbuhan, pemerataan","Industri berat","Nasionalisasi","Pasar bebas"],k:0,tips:"REPELITA = alat trilogi."},
+            {n:41,t:"Ekonomi",s:"C=100+0,6Y; I=150; G=50. Y?",p:["150","300","600","750"],k:3,tips:"(100+150+50)/0,4=750."},
+            {n:42,t:"Ekonomi",s:"C=200+0,8Y; I=100; G=100. Y?",p:["1000","1500","2000","2500"],k:2,tips:"(200+100+100)/0,2=2000."},
+            {n:43,t:"Geografi",s:"Interaksi Jawa-Kalimantan-Sumatera (potensi berbeda)?",p:["Migrasi massal","Ekspor-impor","Perubahan iklim","Kesenjangan"],k:1,tips:"Complementarity."}
         ];
 
-        // Render soal ke halaman
-        function renderSoal() {
+        function render() {
             const area = document.getElementById('soal-area');
             let html = '';
-            soalPG.forEach((soal, index) => {
-                html += `
-                    <div class="soal-item" id="soal-${soal.nomor}">
-                        <div class="soal-title">${soal.nomor}. [${soal.topik}] ${soal.soal}</div>
-                        <div class="pilihan">
-                            ${soal.pilihan.map((p, i) => `
-                                <label>
-                                    <input type="radio" name="soal-${soal.nomor}" value="${i}" onclick="clearFeedback('soal-${soal.nomor}')">
-                                    ${String.fromCharCode(65 + i)}. ${p}
-                                </label>
-                            `).join('')}
-                        </div>
-                        <button onclick="checkAnswer(${index})" style="margin-top:10px;">Cek Jawaban</button>
-                        <div class="feedback" id="feedback-${soal.nomor}"></div>
-                        <div class="tips" id="tips-${soal.nomor}"></div>
-                    </div>
-                `;
-            });
+            for (let i = 0; i < soalPG.length; i++) {
+                const s = soalPG[i];
+                html += `<div class="soal" id="soal-${s.n}">
+                    <div class="soal-title">${s.n}. [${s.t}] ${s.s}</div>
+                    <div class="pilihan">`;
+                for (let j = 0; j < s.p.length; j++) {
+                    html += `<label><input type="radio" name="soal-${s.n}" value="${j}" onchange="check(${i},${j})"> ${String.fromCharCode(65+j)}. ${s.p[j]}</label>`;
+                }
+                html += `</div>
+                    <div class="feedback" id="fb-${s.n}"></div>
+                    <div class="tips" id="tips-${s.n}"></div>
+                </div>`;
+            }
             area.innerHTML = html;
         }
 
-        function checkAnswer(index) {
-            const soal = soalPG[index];
-            const nomor = soal.nomor;
-            const selected = document.querySelector(`input[name="soal-${nomor}"]:checked`);
-            if (!selected) {
-                alert('Pilih salah satu jawaban dulu ya!');
-                return;
-            }
-            const userAnswer = parseInt(selected.value);
-            const feedback = document.getElementById(`feedback-${nomor}`);
-            const tips = document.getElementById(`tips-${nomor}`);
-            if (userAnswer === soal.kunci) {
-                feedback.innerHTML = '✅ Benar!';
-                feedback.className = 'feedback correct';
+        function check(index, jawaban) {
+            const s = soalPG[index];
+            const fb = document.getElementById(`fb-${s.n}`);
+            const tips = document.getElementById(`tips-${s.n}`);
+            if (jawaban === s.k) {
+                fb.innerHTML = '✅ Benar!';
+                fb.className = 'feedback correct';
+                playCorrect();  // Panggil suara benar
             } else {
-                feedback.innerHTML = `❌ Salah. Jawaban yang benar adalah ${String.fromCharCode(65 + soal.kunci)}.`;
-                feedback.className = 'feedback wrong';
+                fb.innerHTML = `❌ Salah. Jawaban: ${String.fromCharCode(65+s.k)}.`;
+                fb.className = 'feedback wrong';
+                playWrong();    // Panggil suara salah
             }
-            tips.innerHTML = `<strong>Tips:</strong> ${soal.tips}`;
+            tips.innerHTML = `💡 Tips: ${s.tips}`;
             tips.classList.add('show');
-        }
-
-        function clearFeedback(nomor) {
-            const feedback = document.getElementById(`feedback-${nomor}`);
-            const tips = document.getElementById(`tips-${nomor}`);
-            if (feedback) { feedback.innerHTML = ''; feedback.className = 'feedback'; }
-            if (tips) { tips.innerHTML = ''; tips.classList.remove('show'); }
+            const radios = document.getElementsByName(`soal-${s.n}`);
+            for (let r of radios) { r.disabled = true; }
         }
 
         function resetAll() {
-            // Reset semua radio
-            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-            // Reset feedback dan tips
+            document.querySelectorAll('input[type=radio]').forEach(r => { r.checked = false; r.disabled = false; });
             document.querySelectorAll('.feedback').forEach(f => { f.innerHTML = ''; f.className = 'feedback'; });
             document.querySelectorAll('.tips').forEach(t => { t.innerHTML = ''; t.classList.remove('show'); });
-            // Scroll ke atas
             window.scrollTo(0, 0);
         }
 
@@ -364,13 +200,7 @@
             body.dataset.theme = body.dataset.theme === 'dark' ? '' : 'dark';
         }
 
-        function toggleHelp() {
-            const popup = document.getElementById('helpPopup');
-            popup.classList.toggle('show');
-        }
-
-        // Render soal saat halaman dimuat
-        renderSoal();
+        document.addEventListener('DOMContentLoaded', render);
     </script>
 </body>
 </html>
